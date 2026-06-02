@@ -1,0 +1,6 @@
+﻿{
+  "rewrites": [
+    { "source": "/", "destination": "/Disha Dance Studio/Disha Dance Studio.html" },
+    { "source": "/classes/:page", "destination": "/Disha Dance Studio/classes/:page" }
+  ]
+}
