@@ -1,0 +1,773 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Disha Dance Studio — Bollywood Dance Academy, Columbus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0c0a09;
+    --bg-2:#15110f;
+    --bg-3:#1d1815;
+    --line:#2a2320;
+    --text:#efe7df;
+    --muted:#a3968c;
+    --muted-2:#7c7068;
+    --clay:#c4906f;
+    --clay-soft:#d9a986;
+    --clay-deep:#9d6a4e;
+    --serif:"Playfair Display", Georgia, serif;
+    --sans:"Hanken Grotesk", system-ui, sans-serif;
+    --maxw:1240px;
+    --pad:clamp(20px, 5vw, 72px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  ::selection{background:var(--clay);color:#1a120c;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+  .eyebrow{
+    font-size:12px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--clay);font-weight:600;
+  }
+  .label{
+    font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--muted);font-weight:600;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px var(--pad);
+    transition:background .4s ease, border-color .4s ease, padding .4s ease;
+    border-bottom:1px solid transparent;
+  }
+  header.nav.scrolled{
+    background:rgba(12,10,9,.82);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+    padding-top:12px;padding-bottom:12px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand img{height:75px;width:auto;}
+  nav.links{display:flex;align-items:center;gap:34px;}
+  nav.links a{
+    font-size:14.5px;font-weight:500;color:var(--text);
+    position:relative;padding:4px 0;opacity:.82;transition:opacity .25s;
+  }
+  nav.links a::after{
+    content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1.5px;
+    background:var(--clay);transition:right .3s ease;
+  }
+  nav.links a:hover{opacity:1;}
+  nav.links a:hover::after{right:0;}
+  .btn{
+    font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;
+    border:none;border-radius:999px;padding:12px 24px;
+    background:var(--clay);color:#1a120c;
+    transition:transform .2s ease, background .25s ease, box-shadow .25s ease;
+    letter-spacing:.01em;
+  }
+  .btn:hover{background:var(--clay-soft);transform:translateY(-2px);box-shadow:0 10px 26px -10px rgba(196,144,111,.6);}
+  .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line);}
+  .btn.ghost:hover{border-color:var(--clay);color:var(--clay-soft);box-shadow:none;}
+  .nav-cta{display:flex;align-items:center;gap:18px;}
+  .menu-toggle{display:none;background:none;border:none;color:var(--text);cursor:pointer;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:radial-gradient(120% 80% at 50% 38%, #2a201a 0%, #160f0c 58%, #0c0a09 100%);
+    overflow:hidden;padding-bottom:clamp(20px,4vw,46px);
+  }
+  .hero-stage{position:relative;height:clamp(540px,82vh,780px);}
+  .hero-bg{position:absolute;inset:0;z-index:1;display:flex;align-items:flex-end;justify-content:center;padding-bottom:clamp(60px,9vw,120px);}
+  .hero-bg img{
+    width:min(1040px,90vw);height:auto;max-height:96%;object-fit:contain;object-position:bottom;
+    filter:drop-shadow(0 40px 70px rgba(0,0,0,.55)) saturate(1.06);
+    animation:floaty 8s ease-in-out infinite;
+  }
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .hero-veil{position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:linear-gradient(to bottom, rgba(12,10,9,.5) 0%, rgba(12,10,9,0) 24%, rgba(12,10,9,0) 64%, rgba(12,10,9,.45) 100%);}
+  .hero-head{position:absolute;top:13%;left:0;right:0;z-index:3;text-align:center;padding:0 16px;}
+  .hero-head h1{font-family:var(--serif);text-transform:uppercase;line-height:.9;letter-spacing:.005em;}
+  .hero-head h1 .l1{
+    display:block;font-weight:500;font-size:clamp(34px,6.6vw,86px);
+    color:#d8c8bd;opacity:.92;
+    text-shadow:0 2px 24px rgba(0,0,0,.45);
+  }
+  .hero-head h1 .l2{
+    display:block;font-weight:800;font-size:clamp(46px,9.2vw,124px);
+    color:#fbf6f1;margin-top:.02em;
+    text-shadow:0 4px 30px rgba(0,0,0,.55);
+  }
+
+  /* ---------- STATS PANEL ---------- */
+  .hero-stats-wrap{position:relative;z-index:4;margin-top:clamp(-150px,-12vw,-80px);}
+  .hero-stats{
+    background:linear-gradient(180deg,#cf9d82 0%, #c89478 100%);
+    color:#2c1c12;border-radius:18px 18px 16px 16px;
+    box-shadow:0 30px 70px -30px rgba(0,0,0,.7);
+    display:grid;grid-template-columns:minmax(280px,1fr) 1.35fr;gap:0;
+    overflow:hidden;
+  }
+  .hs-tag{padding:22px 32px;display:flex;align-items:center;border-right:1px solid rgba(44,28,18,.22);}
+  .hs-tag p{font-family:var(--serif);font-weight:700;font-size:clamp(19px,1.9vw,25px);line-height:1.25;color:#2c1c12;}
+  .hs-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .hs-grid .stat{
+    padding:16px 30px;border-bottom:1px solid rgba(44,28,18,.18);border-right:1px solid rgba(44,28,18,.18);
+    text-align:center;
+  }
+  .hs-grid .stat:nth-child(2n){border-right:none;}
+  .hs-grid .stat:nth-child(n+3){border-bottom:none;}
+  .hs-grid .num{font-family:var(--serif);font-weight:700;font-size:clamp(30px,3vw,42px);line-height:1;color:#2c1c12;}
+  .hs-grid .cap{margin-top:8px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#5a3d2b;font-weight:600;}
+  .nav-cta .ar{display:inline-block;transition:transform .25s ease;}
+  .btn:hover .ar{transform:translateX(3px);}
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:96px 0;}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:46px;flex-wrap:wrap;}
+  .sec-head h2{
+    font-family:var(--serif);font-weight:600;font-size:clamp(34px,4.4vw,60px);
+    line-height:1.02;letter-spacing:-.01em;max-width:13ch;
+  }
+  .sec-head .sub{color:var(--muted);max-width:38ch;font-size:16px;}
+
+  /* ---------- CLASSES ---------- */
+  .classes{background:var(--bg-2);}
+  .class-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .class-card{
+    background:var(--bg);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    will-change:transform;
+  }
+  .class-card:hover{transform:translateY(-6px);border-color:var(--clay-deep);box-shadow:0 24px 50px -28px rgba(0,0,0,.8);}
+  .class-card .ph{position:relative;aspect-ratio:16/10;overflow:hidden;}
+  .class-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1);filter:saturate(1.02);}
+  .class-card:hover .ph img{transform:scale(1.06);}
+  .class-card .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(12,10,9,.55), transparent 55%);}
+  .class-body{padding:20px 22px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .class-body h3{font-family:var(--serif);font-size:25px;font-weight:600;}
+  .class-body .sched{text-align:right;}
+  .class-body .sched .day{font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--clay-soft);}
+  .class-body .sched .cnt{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-top:3px;}
+  .class-card .arrow{
+    margin-top:0;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);
+    display:none;
+  }
+
+  /* ---------- STAGE GALLERY ---------- */
+  .stage .sec-head{margin-bottom:30px;}
+  .scroll-hint{display:inline-flex;align-items:center;gap:8px;color:var(--muted-2);font-size:12px;letter-spacing:.18em;text-transform:uppercase;}
+  .scroll-hint .arr{display:inline-block;animation:nudge 1.8s ease-in-out infinite;}
+  @keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+
+  /* Gallery wrapper for arrows + overflow clip */
+  .gallery-outer{
+    position:relative;
+  }
+  /* Fade edges */
+  .gallery-outer::before,.gallery-outer::after{
+    content:"";position:absolute;top:0;bottom:26px;width:80px;z-index:10;pointer-events:none;
+  }
+  .gallery-outer::before{left:0;background:linear-gradient(to right, var(--bg) 0%, transparent 100%);}
+  .gallery-outer::after{right:0;background:linear-gradient(to left, var(--bg) 0%, transparent 100%);}
+
+  /* Arrow buttons */
+  .gallery-arrow{
+    position:absolute;top:50%;transform:translateY(calc(-50% - 13px));z-index:20;
+    background:rgba(21,17,15,.72);backdrop-filter:blur(10px);
+    border:1px solid var(--line);border-radius:50%;
+    width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+    cursor:pointer;color:var(--text);font-size:18px;line-height:1;
+    transition:background .25s, border-color .25s, transform .25s, opacity .25s;
+    opacity:.6;
+  }
+  .gallery-arrow:hover{
+    background:rgba(196,144,111,.18);border-color:var(--clay);color:var(--clay-soft);
+    opacity:1;transform:translateY(calc(-50% - 13px)) scale(1.08);
+  }
+  .gallery-arrow.left{left:12px;}
+  .gallery-arrow.right{right:12px;}
+
+  .gallery{
+    display:flex;gap:20px;overflow-x:auto;padding:6px 0 26px;cursor:grab;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .gallery::-webkit-scrollbar{display:none;}
+  .gallery.dragging{cursor:grabbing;}
+  .gtile{
+    flex:0 0 auto;height:380px;border-radius:14px;overflow:hidden;position:relative;
+    border:1px solid var(--line);background:var(--bg-3);
+    transition:transform .5s cubic-bezier(.2,.8,.2,1),
+               filter .5s cubic-bezier(.2,.8,.2,1),
+               opacity .5s cubic-bezier(.2,.8,.2,1);
+    will-change:transform,filter;
+  }
+  .gtile img{height:100%;width:100%;object-fit:cover;pointer-events:none;transition:transform .7s cubic-bezier(.2,.8,.2,1);}
+  .gtile.wide{width:520px;}
+  .gtile.sq{width:380px;}
+  .gtile.tall{width:300px;}
+
+  /* Spotlight hover states */
+  .gallery.has-hover .gtile{
+    filter:brightness(.45);
+    transform:scale(.96);
+  }
+  .gallery.has-hover .gtile.spotlight{
+    filter:brightness(1) drop-shadow(0 12px 36px rgba(196,144,111,.35));
+    transform:scale(1.04);
+    z-index:5;
+  }
+  .gallery.has-hover .gtile.dim-neighbor{
+    filter:brightness(.3);
+    transform:scale(.93);
+  }
+
+  /* ---------- AWARDS ---------- */
+  .awards{background:var(--bg-2);}
+  .award-list{border-top:1px solid var(--line);}
+  .award-row{
+    display:grid;grid-template-columns:64px 1fr auto;gap:28px;align-items:center;
+    padding:34px 8px;border-bottom:1px solid var(--line);
+    transition:background .3s ease, padding-left .3s ease;
+  }
+  .award-row:hover{background:linear-gradient(90deg, rgba(196,144,111,.06), transparent);padding-left:22px;}
+  .award-row .idx{font-family:var(--serif);font-size:20px;color:var(--clay);font-style:italic;}
+  .award-row h3{font-family:var(--serif);font-size:clamp(26px,3vw,38px);font-weight:600;line-height:1.05;}
+  .award-row .venue{color:var(--muted);font-size:15px;margin-top:6px;letter-spacing:.01em;}
+  .award-row .pill{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--clay-soft);border:1px solid var(--clay-deep);border-radius:999px;padding:8px 16px;white-space:nowrap;}
+
+  /* ---------- CTA ---------- */
+  .cta{position:relative;overflow:hidden;}
+  .cta-inner{
+    background:radial-gradient(120% 140% at 12% 0%, #2a1d15 0%, var(--bg-2) 58%);
+    border:1px solid var(--line);border-radius:24px;
+    padding:clamp(34px,5vw,72px);
+    display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;
+  }
+  .cta h2{font-family:var(--serif);font-weight:600;font-size:clamp(36px,4.6vw,62px);line-height:1.0;letter-spacing:-.01em;}
+  .cta h2 .it{font-style:italic;color:var(--clay-soft);}
+  .cta p.sub{color:var(--muted);margin-top:20px;max-width:42ch;font-size:17px;}
+  .cta .meta{margin-top:28px;display:flex;gap:30px;flex-wrap:wrap;}
+  .cta .meta div .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);}
+  .cta .meta div .v{font-family:var(--serif);font-size:18px;margin-top:4px;color:var(--text);}
+  form.signup{display:flex;flex-direction:column;gap:14px;}
+  form.signup .field label{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+  form.signup input, form.signup select{
+    width:100%;background:var(--bg);border:1px solid var(--line);border-radius:11px;
+    padding:14px 16px;color:var(--text);font-family:var(--sans);font-size:15px;transition:border-color .25s, box-shadow .25s;
+  }
+  form.signup input::placeholder{color:var(--muted-2);}
+  form.signup input:focus, form.signup select:focus{outline:none;border-color:var(--clay);box-shadow:0 0 0 3px rgba(196,144,111,.16);}
+  form.signup .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  form.signup .submit{margin-top:6px;justify-content:center;width:100%;padding:15px;font-size:15px;}
+  form.signup .err{border-color:#c0564a !important;box-shadow:0 0 0 3px rgba(192,86,74,.15) !important;}
+  .form-note{font-size:12.5px;color:var(--muted-2);text-align:center;}
+  .form-success{
+    display:none;text-align:center;padding:40px 10px;
+  }
+  .form-success.show{display:block;animation:fadeUp .5s ease both;}
+  .form-success .tick{width:56px;height:56px;border-radius:50%;border:2px solid var(--clay);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;color:var(--clay-soft);font-size:26px;}
+  .form-success h3{font-family:var(--serif);font-size:28px;}
+  .form-success p{color:var(--muted);margin-top:8px;}
+
+  /* ---------- FOOTER ---------- */
+  footer.site{padding:70px 0 40px;border-top:1px solid var(--line);}
+  .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start;}
+  .foot-brand img{height:75px;margin-bottom:16px;}
+  .foot-brand p{color:var(--muted);max-width:34ch;font-size:15px;}
+  .foot-cols{display:flex;gap:64px;flex-wrap:wrap;}
+  .foot-col h4{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);margin-bottom:16px;}
+  .foot-col a{display:block;color:var(--text);opacity:.78;font-size:15px;margin-bottom:11px;transition:color .2s,opacity .2s;}
+  .foot-col a:hover{opacity:1;color:var(--clay-soft);}
+  .foot-bottom{margin-top:54px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted-2);font-size:13px;}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1 !important;transform:none !important;}
+    .hero-media .frame img{animation:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1000px){
+    .class-grid{grid-template-columns:repeat(2,1fr);}
+    .cta-inner{grid-template-columns:1fr;gap:34px;}
+    .hero-stats{grid-template-columns:1fr;}
+    .hs-tag{border-right:none;border-bottom:1px solid rgba(44,28,18,.22);}
+    .hero-head{top:11vh;}
+  }
+  @media (max-width:680px){
+    nav.links{display:none;}
+    .menu-toggle{display:block;}
+    .nav-cta .btn:not(.menu-toggle){display:none;}
+    .class-grid{grid-template-columns:1fr;}
+    .hs-grid .num{font-size:30px;}
+    .hero-head{top:13vh;}
+    .award-row{grid-template-columns:1fr;gap:10px;padding:26px 6px;}
+    .award-row .idx{display:none;}
+    .award-row .pill{justify-self:start;}
+    .gtile{height:300px;}
+    .gtile.wide{width:360px;}
+    .gtile.sq{width:300px;}
+    .gtile.tall{width:240px;}
+    section{padding:70px 0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Disha Dance Studio home">
+    <img src="images/logo-v4.png" alt="Disha Dance Studio" />
+  </a>
+  <nav class="links">
+    <a href="#top">Home</a>
+    <a href="#classes">Classes</a>
+    <a href="#stage">Gallery</a>
+  </nav>
+  <div class="nav-cta">
+    <a href="#contact" class="btn">Lets Talk <span class="ar">&rarr;</span></a>
+    <button class="btn ghost menu-toggle" id="menuToggle" aria-label="Menu">Menu</button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="about">
+  <div class="hero-stage">
+    <div class="hero-bg">
+      <img src="images/hero.png" alt="Classical Indian dance mudras performed with adorned hands" />
+    </div>
+    <div class="hero-veil"></div>
+    <div class="hero-head">
+      <h1>
+        <span class="l1">The Rhythm of Home,</span>
+        <span class="l2">Taught Here.</span>
+      </h1>
+    </div>
+  </div>
+
+  <!-- STATS PANEL -->
+  <div class="wrap hero-stats-wrap">
+    <div class="hero-stats">
+      <div class="hs-tag"><p>A premier Bollywood dance academy serving Columbus families since 2008</p></div>
+      <div class="hs-grid">
+        <div class="stat"><div class="num" data-count="18" data-suffix="+">18+</div><div class="cap">Years Teaching</div></div>
+        <div class="stat"><div class="num" data-count="200" data-suffix="+">200+</div><div class="cap">Students</div></div>
+        <div class="stat"><div class="num" data-count="47">47</div><div class="cap">Regional Awards</div></div>
+        <div class="stat"><div class="num" data-count="6">6</div><div class="cap">Active Groups</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLASSES ============ -->
+<section class="classes" id="classes">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="reveal">A group for every<br/>age &amp; stage</h2>
+      <p class="sub reveal">Six weekly groups, from tiny toes to seasoned aunties. Drop into a trial and find your tempo.</p>
+    </div>
+    <div class="class-grid">
+      <!-- cards injected -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ FROM THE STAGE ============ -->
+<section class="stage" id="stage">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow reveal" style="display:block;margin-bottom:14px;">Gallery</span>
+        <h2 class="reveal">From the stage</h2>
+      </div>
+      <span class="scroll-hint reveal">Scroll horizontally <span class="arr">→</span></span>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="gallery-outer">
+      <button class="gallery-arrow left" id="galLeft">&#8249;</button>
+      <button class="gallery-arrow right" id="galRight">&#8250;</button>
+      <div class="gallery" id="gallery">
+        <!-- tiles injected -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AWARDS ============ -->
+<section class="awards" id="awards">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="reveal">Recently<br/>celebrated</h2>
+      <p class="sub reveal">Our dancers and choreography on stages across the region.</p>
+    </div>
+    <div class="award-list" id="awardList">
+      <!-- rows injected -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA / CONTACT ============ -->
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="cta-inner reveal">
+      <div class="cta-copy">
+        <h2>Start your <span class="it">dance</span><br/>journey today</h2>
+        <p class="sub">Tell us a little about your dancer and we'll match you to the right group.</p>
+        <div class="meta">
+          <div><div class="k">Studio</div><div class="v">Clintonville, Columbus</div></div>
+          <div><div class="k">Call</div><div class="v">(614) 555-0182</div></div>
+          <div><div class="k">Email</div><div class="v">hello@dishadance.studio</div></div>
+        </div>
+      </div>
+      <div class="cta-form">
+        <form class="signup" id="signupForm" novalidate>
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" placeholder="Priya Sharma" />
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@email.com" />
+            </div>
+            <div class="field">
+              <label for="group">Interested group</label>
+              <select id="group" name="group">
+                <option value="">Choose…</option>
+                <option>Tiny Stars</option>
+                <option>Junior Beats</option>
+                <option>Teen Crew</option>
+                <option>Senior Squad</option>
+                <option>Aunties' Hour</option>
+                <option>Performance Team</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn submit">Submit</button>
+          <p class="form-note">No commitment — we'll reach out within one business day.</p>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="tick">✓</div>
+          <h3>See you on the floor!</h3>
+          <p>Thanks — we'll be in touch shortly to set up your free trial class.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="images/logo-v4.png" alt="Disha Dance Studio" />
+        <p>The rhythm of home, taught here. Bollywood dance for every Columbus family since 2008.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Explore</h4>
+          <a href="#about">About</a>
+          <a href="#classes">Classes</a>
+          <a href="#stage">Stage</a>
+          <a href="#awards">Awards</a>
+        </div>
+        <div class="foot-col">
+          <h4>Classes</h4>
+          <a href="#classes">Tiny Stars</a>
+          <a href="#classes">Junior Beats</a>
+          <a href="#classes">Teen Crew</a>
+          <a href="#classes">Aunties' Hour</a>
+        </div>
+        <div class="foot-col">
+          <h4>Visit</h4>
+          <a href="#contact">Clintonville Studio</a>
+          <a href="#contact">(614) 555-0182</a>
+          <a href="#contact">hello@dishadance.studio</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Disha Dance Studio. All rights reserved.</span>
+      <span>Made with love in Columbus, Ohio.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---------- DATA ----------
+  const CLASSES = [
+    {name:"Tiny Stars", day:"Sat 10:00 AM", count:"12 students", img:"images/class-tiny-stars.jpg", href:"classes/tiny-stars.html"},
+    {name:"Junior Beats", day:"Sat 11:30 AM", count:"18 students", img:"images/class-junior-beats.jpg", href:"classes/junior-beats.html"},
+    {name:"Teen Crew", day:"Sun 12:00 PM", count:"22 students", img:"images/class-teen-crew.jpg", href:"classes/teen-crew.html"},
+    {name:"Senior Squad", day:"Sun 1:30 PM", count:"16 students", img:"images/class-senior-squad.jpg", href:"classes/senior-squad.html"},
+    {name:"Aunties' Hour", day:"Wed 7:00 PM", count:"14 students", img:"images/class-aunties-hour.jpg", href:"classes/aunties-hour.html"},
+    {name:"Performance Team", day:"Fri 6:30 PM", count:"11 students", img:"images/class-performance-team.jpg", href:"classes/performance-team.html"},
+  ];
+  const GALLERY = [
+    {img:"images/stage-1.jpg", k:"wide"},
+    {img:"images/stage-2.jpg", k:"wide"},
+    {img:"images/stage-3.jpg", k:"sq"},
+    {img:"images/stage-4.jpg", k:"sq"},
+    {img:"images/stage-5.jpg", k:"sq"},
+    {img:"images/stage-6.jpg", k:"wide"},
+    {img:"images/stage-7.jpg", k:"tall"},
+    {img:"images/stage-8.jpg", k:"sq"},
+  ];
+  const AWARDS = [
+    {title:"1st Place", venue:"Columbus Dance Championship", pill:"2025"},
+    {title:"Excellence Award", venue:"Ohio Arts & Culture Gala", pill:"2025"},
+    {title:"Best Choreography", venue:"Desi Beats Invitational", pill:"2025"},
+    {title:"Featured Performer", venue:"NASCAR Pride Celebration 2026", pill:"2026"},
+  ];
+
+  // ---------- RENDER CLASSES ----------
+  const cg = document.querySelector('.class-grid');
+  CLASSES.forEach((c,i)=>{
+    const el = document.createElement('a');
+    el.className='class-card reveal';
+    el.href=c.href;
+    el.style.transitionDelay=(i%3*0.07)+'s';
+    el.innerHTML = `
+      <div class="ph"><img src="${c.img}" alt="${c.name} class in session" loading="lazy" /></div>
+      <div class="class-body">
+        <h3>${c.name}</h3>
+        <div class="sched">
+          <div class="day">${c.day}</div>
+          <div class="cnt">${c.count}</div>
+        </div>
+      </div>`;
+    cg.appendChild(el);
+  });
+
+  // ---------- RENDER GALLERY ----------
+  const gal = document.getElementById('gallery');
+  GALLERY.forEach(g=>{
+    const el=document.createElement('div');
+    el.className='gtile '+g.k;
+    el.innerHTML=`<img src="${g.img}" alt="Disha Dance performance" loading="lazy" />`;
+    gal.appendChild(el);
+  });
+
+  // ---------- RENDER AWARDS ----------
+  const al = document.getElementById('awardList');
+  AWARDS.forEach((a,i)=>{
+    const el=document.createElement('div');
+    el.className='award-row reveal';
+    el.innerHTML=`
+      <div class="idx">0${i+1}</div>
+      <div>
+        <h3>${a.title}</h3>
+        <div class="venue">${a.venue}</div>
+      </div>
+      <div class="pill">${a.pill}</div>`;
+    al.appendChild(el);
+  });
+
+  // ---------- NAV SCROLL STATE ----------
+  const nav=document.getElementById('nav');
+  const onScroll=()=>{ nav.classList.toggle('scrolled', window.scrollY>20); };
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // ---------- REVEAL ON SCROLL ----------
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // ---------- COUNT-UP STATS ----------
+  const countEls=document.querySelectorAll('.num[data-count]');
+  const cio=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el=e.target; cio.unobserve(el);
+      const target=+el.dataset.count, suffix=el.dataset.suffix||'';
+      const dur=1100, start=performance.now();
+      const tick=(now)=>{
+        const p=Math.min(1,(now-start)/dur);
+        const ease=1-Math.pow(1-p,3);
+        el.textContent=Math.round(target*ease)+suffix;
+        if(p<1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  },{threshold:.6});
+  countEls.forEach(el=>cio.observe(el));
+
+  // ---------- INFINITE AUTO-SCROLL GALLERY ----------
+  (function(){
+    const gal = document.getElementById('gallery');
+
+    // Build 3 copies of tiles for seamless looping
+    const origTiles = Array.from(gal.querySelectorAll('.gtile'));
+    [1,2].forEach(()=>{
+      origTiles.forEach(t=>{
+        const clone = t.cloneNode(true);
+        clone.setAttribute('aria-hidden','true');
+        gal.appendChild(clone);
+      });
+    });
+
+    // Measure one set width
+    function setWidth(){
+      return origTiles.reduce((sum,t)=>sum+t.offsetWidth+20, 0);
+    }
+
+    // Start scrolled to the second copy so we can loop both directions
+    let oneSet = setWidth();
+    gal.scrollLeft = oneSet;
+
+    // Seamless loop correction
+    function loopCorrect(){
+      if(gal.scrollLeft <= 2) gal.scrollLeft += oneSet;
+      else if(gal.scrollLeft >= oneSet*2 - 2) gal.scrollLeft -= oneSet;
+    }
+    gal.addEventListener('scroll', loopCorrect, {passive:true});
+
+    // Auto-scroll (banner motion)
+    const SPEED = 0.55; // px per frame — slow and steady
+    let rafId, paused = false, userScrolling = false, userScrollTimer;
+
+    function autoTick(){
+      if(!paused && !userScrolling){
+        gal.scrollLeft += SPEED;
+        loopCorrect();
+      }
+      rafId = requestAnimationFrame(autoTick);
+    }
+    rafId = requestAnimationFrame(autoTick);
+
+    // Pause on hover
+    gal.addEventListener('mouseenter',()=>{ paused=true; });
+    gal.addEventListener('mouseleave',()=>{ paused=false; });
+
+    // Drag scroll
+    let down=false, startX, startScroll, moved=false;
+    gal.addEventListener('mousedown',e=>{
+      down=true; moved=false; startX=e.pageX; startScroll=gal.scrollLeft;
+      gal.classList.add('dragging'); paused=true;
+    });
+    window.addEventListener('mouseup',()=>{
+      if(!down) return;
+      down=false; gal.classList.remove('dragging');
+      if(!gal.matches(':hover')) paused=false;
+    });
+    window.addEventListener('mousemove',e=>{
+      if(!down) return;
+      const dx=e.pageX-startX;
+      if(Math.abs(dx)>4) moved=true;
+      gal.scrollLeft=startScroll-dx;
+      loopCorrect();
+    });
+    gal.addEventListener('click',e=>{ if(moved) e.preventDefault(); },true);
+
+    // Wheel: map vertical to horizontal
+    gal.addEventListener('wheel',e=>{
+      if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){
+        e.preventDefault();
+        gal.scrollLeft+=e.deltaY*1.2;
+        loopCorrect();
+      }
+    },{passive:false});
+
+    // Arrow buttons — scroll by roughly one tile width
+    const ARROW_STEP = 420;
+    function smoothScroll(delta){
+      paused=true;
+      userScrolling=true;
+      clearTimeout(userScrollTimer);
+      const target = gal.scrollLeft + delta;
+      const start = gal.scrollLeft;
+      const dur = 480;
+      const t0 = performance.now();
+      function step(now){
+        const p = Math.min(1,(now-t0)/dur);
+        const ease = p<.5 ? 2*p*p : -1+(4-2*p)*p;
+        gal.scrollLeft = start + delta*ease;
+        loopCorrect();
+        if(p<1){ requestAnimationFrame(step); }
+        else{
+          userScrollTimer = setTimeout(()=>{ userScrolling=false; paused=false; },300);
+        }
+      }
+      requestAnimationFrame(step);
+    }
+    document.getElementById('galLeft').addEventListener('click',()=>smoothScroll(-ARROW_STEP));
+    document.getElementById('galRight').addEventListener('click',()=>smoothScroll(ARROW_STEP));
+
+    // Spotlight hover effect
+    const allTiles = ()=>Array.from(gal.querySelectorAll('.gtile'));
+    gal.addEventListener('mouseover',e=>{
+      const tile = e.target.closest('.gtile');
+      if(!tile) return;
+      const tiles = allTiles();
+      const idx = tiles.indexOf(tile);
+      gal.classList.add('has-hover');
+      tiles.forEach((t,i)=>{
+        t.classList.remove('spotlight','dim-neighbor');
+        if(i===idx) t.classList.add('spotlight');
+        else if(i===idx-1||i===idx+1) t.classList.add('dim-neighbor');
+      });
+    });
+    gal.addEventListener('mouseleave',()=>{
+      gal.classList.remove('has-hover');
+      allTiles().forEach(t=>t.classList.remove('spotlight','dim-neighbor'));
+    });
+  })();
+
+  // ---------- FORM ----------
+  const form=document.getElementById('signupForm');
+  const success=document.getElementById('formSuccess');
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const name=form.name, email=form.email;
+    let ok=true;
+    [name,email].forEach(f=>f.classList.remove('err'));
+    if(!name.value.trim()){name.classList.add('err');ok=false;}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value.trim())){email.classList.add('err');ok=false;}
+    if(!ok)return;
+    form.style.display='none';
+    success.classList.add('show');
+  });
+  [...form.querySelectorAll('input')].forEach(inp=>{
+    inp.addEventListener('input',()=>inp.classList.remove('err'));
+  });
+
+  // ---------- MOBILE MENU (simple anchor scroll fallback) ----------
+  document.getElementById('menuToggle').addEventListener('click',()=>{
+    const t=document.getElementById('classes');
+    window.scrollTo({top:t.offsetTop-60, behavior:'smooth'});
+  });
+</script>
+</body>
+</html>

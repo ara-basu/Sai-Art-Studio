@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aunties' Hour — Disha Dance Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#0c0a09;--bg-2:#15110f;--bg-3:#1d1815;--line:#2a2320;--text:#efe7df;--muted:#a3968c;--muted-2:#7c7068;--clay:#c4906f;--clay-soft:#d9a986;--clay-deep:#9d6a4e;--serif:"Playfair Display",Georgia,serif;--sans:"Hanken Grotesk",system-ui,sans-serif;--maxw:1100px;--pad:clamp(20px,5vw,72px);}
+  *{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}::selection{background:var(--clay);color:#1a120c;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+  .eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--clay);font-weight:600;}
+  header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px var(--pad);background:rgba(12,10,9,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  .brand img{height:75px;width:auto;}.back-btn{font-size:13.5px;font-weight:600;color:var(--clay-soft);letter-spacing:.04em;display:flex;align-items:center;gap:6px;opacity:.82;transition:opacity .2s;}.back-btn:hover{opacity:1;}
+  .hero{padding-top:110px;}.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-bottom:64px;}
+  .hero-img{border-radius:18px;overflow:hidden;aspect-ratio:4/3;border:1px solid var(--line);}.hero-img img{width:100%;height:100%;object-fit:cover;}
+  .hero-copy .eyebrow{display:block;margin-bottom:18px;}.hero-copy h1{font-family:var(--serif);font-size:clamp(40px,5vw,64px);font-weight:700;line-height:1.0;letter-spacing:-.01em;margin-bottom:20px;}.hero-copy p.lead{color:var(--muted);font-size:17px;max-width:44ch;margin-bottom:32px;line-height:1.7;}
+  .btn{font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;border:none;border-radius:999px;padding:13px 28px;background:var(--clay);color:#1a120c;transition:transform .2s,background .25s,box-shadow .25s;letter-spacing:.01em;display:inline-block;}.btn:hover{background:var(--clay-soft);transform:translateY(-2px);box-shadow:0 10px 26px -10px rgba(196,144,111,.6);}
+  .quick-stats{display:flex;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:36px;}.qs{flex:1;padding:18px 20px;text-align:center;border-right:1px solid var(--line);}.qs:last-child{border-right:none;}.qs .val{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--clay-soft);}.qs .lbl{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin-top:4px;}
+  hr.div{border:none;border-top:1px solid var(--line);margin:0;}
+  .section{padding:72px 0;}.section h2{font-family:var(--serif);font-size:clamp(28px,3.5vw,42px);font-weight:600;margin-bottom:24px;line-height:1.1;}.section p{color:var(--muted);font-size:16px;line-height:1.75;max-width:68ch;}.section p+p{margin-top:14px;}
+  .details-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:14px;}.detail-card{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:22px 24px;}.detail-card .icon{font-size:22px;margin-bottom:12px;}.detail-card h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-bottom:8px;}.detail-card p{color:var(--text);font-size:15px;line-height:1.5;}
+  .expect-list{margin-top:16px;display:flex;flex-direction:column;gap:14px;}.expect-item{display:flex;gap:16px;align-items:flex-start;}.expect-item .dot{width:8px;height:8px;border-radius:50%;background:var(--clay);margin-top:8px;flex-shrink:0;}.expect-item p{color:var(--muted);font-size:16px;line-height:1.65;}
+  .cta-band{background:radial-gradient(120% 140% at 12% 0%,#2a1d15 0%,var(--bg-2) 58%);border:1px solid var(--line);border-radius:20px;padding:clamp(32px,4vw,60px);text-align:center;margin:0 0 96px;}.cta-band h2{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);margin-bottom:14px;}.cta-band p{color:var(--muted);font-size:16px;max-width:46ch;margin:0 auto 28px;}
+  footer{padding:36px 0;border-top:1px solid var(--line);text-align:center;color:var(--muted-2);font-size:13px;}
+  @media(max-width:800px){.hero-inner{grid-template-columns:1fr;gap:32px;}.details-grid{grid-template-columns:1fr 1fr;}.quick-stats{flex-wrap:wrap;}.qs{flex:1 1 45%;border-right:none;border-bottom:1px solid var(--line);}}
+  @media(max-width:500px){.details-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="../Disha Dance Studio.html"><img src="../images/logo-v4.png" alt="Disha Dance Studio" /></a>
+  <a class="back-btn" href="../Disha Dance Studio.html#classes">← Back to Classes</a>
+</header>
+<main>
+  <div class="hero"><div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-img"><img src="../images/class-aunties-hour.jpg" alt="Aunties' Hour class in session" /></div>
+      <div class="hero-copy">
+        <span class="eyebrow">Ages 30+</span>
+        <h1>Aunties' Hour</h1>
+        <p class="lead">The most joyful hour of the week. A welcoming space for women to move, laugh, and rediscover Bollywood — no prior experience, no pressure, just great music and great company.</p>
+        <a href="../Disha Dance Studio.html#contact" class="btn">Enroll Now →</a>
+        <div class="quick-stats">
+          <div class="qs"><div class="val">14</div><div class="lbl">Students</div></div>
+          <div class="qs"><div class="val">Wed</div><div class="lbl">7:00 PM</div></div>
+          <div class="qs"><div class="val">60 min</div><div class="lbl">Per Class</div></div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+  <hr class="div" />
+  <div class="wrap">
+    <div class="section">
+      <h2>About this class</h2>
+      <p>Aunties' Hour is the studio's most beloved group — and for good reason. Designed for women aged 30 and above, this midweek evening class is a warm, high-energy celebration of Bollywood dance. No mirrors, no judgement, just movement.</p>
+      <p>Many members have been with the group for years, making it as much a social gathering as a dance class. Routines draw from classic Bollywood, Punjabi folk, and devotional styles — songs everyone in the room already knows and loves.</p>
+    </div>
+    <hr class="div" />
+    <div class="section">
+      <h2>Class details</h2>
+      <div class="details-grid">
+        <div class="detail-card"><div class="icon">📅</div><h4>Schedule</h4><p>Every Wednesday<br/>7:00 – 8:00 PM</p></div>
+        <div class="detail-card"><div class="icon">📍</div><h4>Location</h4><p>Disha Dance Studio<br/>Clintonville, Columbus OH</p></div>
+        <div class="detail-card"><div class="icon">👩</div><h4>Age Range</h4><p>30 and above</p></div>
+        <div class="detail-card"><div class="icon">⭐</div><h4>Skill Level</h4><p>Complete beginners warmly welcome</p></div>
+        <div class="detail-card"><div class="icon">👩‍🏫</div><h4>Class Size</h4><p>Max 16 students for a personal feel</p></div>
+        <div class="detail-card"><div class="icon">👗</div><h4>Dress Code</h4><p>Whatever is comfortable — no formal dress code</p></div>
+      </div>
+    </div>
+    <hr class="div" />
+    <div class="section">
+      <h2>What to expect</h2>
+      <div class="expect-list">
+        <div class="expect-item"><div class="dot"></div><p>A gentle warm-up with joint mobility exercises and light stretching, adapted for adult bodies.</p></div>
+        <div class="expect-item"><div class="dot"></div><p>Fun, accessible choreography to beloved Bollywood and folk songs — learned in small sections so nobody falls behind.</p></div>
+        <div class="expect-item"><div class="dot"></div><p>A relaxed pace with plenty of repetition so steps become second nature over the term.</p></div>
+        <div class="expect-item"><div class="dot"></div><p>Optional performance at the studio's annual family showcase — a highlight for the whole group.</p></div>
+        <div class="expect-item"><div class="dot"></div><p>Genuine camaraderie — this class has its own WhatsApp group and occasional chai meetups!</p></div>
+      </div>
+    </div>
+    <hr class="div" />
+    <div class="section">
+      <h2>What to bring</h2>
+      <div class="expect-list">
+        <div class="expect-item"><div class="dot"></div><p>Comfortable clothes you can move freely in — salwar kameez, leggings, anything works.</p></div>
+        <div class="expect-item"><div class="dot"></div><p>Flat shoes or bare feet — avoid heels or thick-soled trainers.</p></div>
+        <div class="expect-item"><div class="dot"></div><p>A water bottle and your best energy!</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>Ready to join Aunties' Hour?</h2>
+      <p>Send us a message and we'll get back to you within one business day to get you started.</p>
+      <a href="../Disha Dance Studio.html#contact" class="btn">Get in Touch →</a>
+    </div>
+  </div>
+</main>
+<footer><div class="wrap">© 2026 Disha Dance Studio. All rights reserved.</div></footer>
+</body>
+</html>
